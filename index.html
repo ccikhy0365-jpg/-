@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trend Landing Page</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Pretendard',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Background */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+    radial-gradient(circle at 20% 20%,#7f5af0 0%,transparent 25%),
+    radial-gradient(circle at 80% 30%,#2cb67d 0%,transparent 20%),
+    radial-gradient(circle at 50% 80%,#00c6ff 0%,transparent 25%),
+    #050816;
+}
+
+/* Navbar */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.1);
+    z-index:999;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:100px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    margin-bottom:30px;
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.hero h1{
+    font-size:clamp(3rem,7vw,6rem);
+    line-height:1.1;
+    font-weight:800;
+}
+
+.gradient{
+    background:linear-gradient(
+        90deg,
+        #00f5ff,
+        #7f5af0,
+        #ff5e84
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:25px;
+    font-size:1.2rem;
+    color:#b6b6b6;
+    line-height:1.8;
+}
+
+.cta{
+    margin-top:40px;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 30px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(
+        90deg,
+        #7f5af0,
+        #00c6ff
+    );
+    color:white;
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.08);
+    color:white;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+/* Stats */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    padding:80px 8%;
+}
+
+.stat{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+}
+
+.stat h2{
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+/* Features */
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:3rem;
+}
+
+.features{
+    padding:100px 8%;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border-radius:25px;
+    padding:35px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.icon{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+/* CTA Section */
+
+.final-cta{
+    padding:140px 8%;
+    text-align:center;
+}
+
+.final-box{
+    max-width:1000px;
+    margin:auto;
+    padding:80px;
+    border-radius:30px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(30px);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.final-box h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#888;
+}
+
+/* Animation */
+
+.hidden{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+
+nav ul{
+    display:none;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+.final-box{
+    padding:40px 25px;
+}
+
+.final-box h2{
+    font-size:2rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<nav>
+    <div class="logo">AI BRAND</div>
+
+    <ul>
+        <li><a href="#">홈</a></li>
+        <li><a href="#">기능</a></li>
+        <li><a href="#">가격</a></li>
+        <li><a href="#">문의</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="badge">
+            🚀 2026 New Generation AI Platform
+        </div>
+
+        <h1>
+            미래를 만드는<br>
+            <span class="gradient">
+                AI 솔루션
+            </span>
+        </h1>
+
+        <p>
+            누구나 쉽게 사용할 수 있는 차세대 AI 플랫폼.
+            비즈니스 성장, 콘텐츠 제작, 자동화를 하나의 서비스로 경험하세요.
+        </p>
+
+        <div class="cta">
+            <button class="btn btn-primary">
+                무료 시작하기
+            </button>
+
+            <button class="btn btn-secondary">
+                데모 보기
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section class="stats">
+
+    <div class="stat hidden">
+        <h2>10K+</h2>
+        <p>활성 사용자</p>
+    </div>
+
+    <div class="stat hidden">
+        <h2>98%</h2>
+        <p>만족도</p>
+    </div>
+
+    <div class="stat hidden">
+        <h2>24/7</h2>
+        <p>실시간 지원</p>
+    </div>
+
+    <div class="stat hidden">
+        <h2>120+</h2>
+        <p>파트너사</p>
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="section-title">
+        <h2>강력한 기능</h2>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="card hidden">
+            <div class="icon">⚡</div>
+            <h3>초고속 처리</h3>
+            <p>
+                최신 AI 엔진으로 몇 초 안에 결과를 생성합니다.
+            </p>
+        </div>
+
+        <div class="card hidden">
+            <div class="icon">🎯</div>
+            <h3>높은 정확도</h3>
+            <p>
+                데이터 기반 분석으로 최적의 결과를 제공합니다.
+            </p>
+        </div>
+
+        <div class="card hidden">
+            <div class="icon">🔒</div>
+            <h3>보안 강화</h3>
+            <p>
+                엔터프라이즈 수준의 보안 기술 적용.
+            </p>
+        </div>
+
+        <div class="card hidden">
+            <div class="icon">📈</div>
+            <h3>성장 분석</h3>
+            <p>
+                실시간 데이터 대시보드 제공.
+            </p>
+        </div>
+
+        <div class="card hidden">
+            <div class="icon">🤖</div>
+            <h3>AI 자동화</h3>
+            <p>
+                반복 업무를 자동으로 처리합니다.
+            </p>
+        </div>
+
+        <div class="card hidden">
+            <div class="icon">🌎</div>
+            <h3>글로벌 지원</h3>
+            <p>
+                다국어 환경을 지원합니다.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="final-cta">
+
+    <div class="final-box hidden">
+
+        <h2>
+            지금 시작하고<br>
+            경쟁력을 확보하세요
+        </h2>
+
+        <p>
+            AI와 함께 비즈니스를 한 단계 성장시키세요.
+        </p>
+
+        <br>
+
+        <button class="btn btn-primary">
+            무료 체험 시작
+        </button>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 AI BRAND. All Rights Reserved.
+</footer>
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{
+    threshold:0.2
+});
+
+document.querySelectorAll('.hidden')
+.forEach(el=>{
+    observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
